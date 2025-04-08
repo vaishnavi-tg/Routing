@@ -1,4 +1,4 @@
-import {lazy} from "react"
+import {lazy, Suspense} from "react"
 const Dashboard = lazy(()=>import("./pages/Dashboard"))
 const Landing =lazy(()=>import("./pages/Landing"))
 
@@ -11,8 +11,8 @@ function App() {
       <BrowserRouter>
       <AppBar/>
         <Routes>
-          <Route path={"/"} element={<Landing />} />
-          <Route path={"/dashboard"} element={<Dashboard />} />
+          <Route path={"/"} element={<Suspense fallback={"loading..."}><Landing/></Suspense>}/>
+          <Route path={"/dashboard"} element={<Suspense fallback={"loading..."}><Dashboard /></Suspense>}/> 
 
         </Routes>
       </BrowserRouter>
